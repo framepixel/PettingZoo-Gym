@@ -3,7 +3,7 @@ from __future__ import annotations
 import warnings
 from typing import Any, Dict, Iterable, Iterator, List, Optional, Tuple, TypeVar
 
-import gymnasium.spaces
+import gym.spaces
 import numpy as np
 
 ObsType = TypeVar("ObsType")
@@ -36,10 +36,10 @@ class AECEnv:
     agents: List[AgentID]  # Agents active at any given time
 
     observation_spaces: Dict[
-        AgentID, gymnasium.spaces.Space
+        AgentID, gym.spaces.Space
     ]  # Observation space for each agent
     # Action space for each agent
-    action_spaces: Dict[AgentID, gymnasium.spaces.Space]
+    action_spaces: Dict[AgentID, gym.spaces.Space]
 
     # Whether each agent has just reached a terminal state
     terminations: Dict[AgentID, bool]
@@ -114,7 +114,7 @@ class AECEnv:
         """
         pass
 
-    def observation_space(self, agent: AgentID) -> gymnasium.spaces.Space:
+    def observation_space(self, agent: AgentID) -> gym.spaces.Space:
         """Takes in agent and returns the observation space for that agent.
 
         MUST return the same value for the same agent name
@@ -126,7 +126,7 @@ class AECEnv:
         )
         return self.observation_spaces[agent]
 
-    def action_space(self, agent: str) -> gymnasium.spaces.Space:
+    def action_space(self, agent: str) -> gym.spaces.Space:
         """Takes in agent and returns the action space for that agent.
 
         MUST return the same value for the same agent name
@@ -295,9 +295,9 @@ class ParallelEnv:
     agents: List[AgentID]
     possible_agents: List[AgentID]
     observation_spaces: Dict[
-        AgentID, gymnasium.spaces.Space
+        AgentID, gym.spaces.Space
     ]  # Observation space for each agent
-    action_spaces: Dict[AgentID, gymnasium.spaces.Space]
+    action_spaces: Dict[AgentID, gym.spaces.Space]
 
     def reset(
         self,
@@ -354,7 +354,7 @@ class ParallelEnv:
             )
         )
 
-    def observation_space(self, agent: AgentID) -> gymnasium.spaces.Space:
+    def observation_space(self, agent: AgentID) -> gym.spaces.Space:
         """Takes in agent and returns the observation space for that agent.
 
         MUST return the same value for the same agent name
@@ -366,7 +366,7 @@ class ParallelEnv:
         )
         return self.observation_spaces[agent]
 
-    def action_space(self, agent: AgentID) -> gymnasium.spaces.Space:
+    def action_space(self, agent: AgentID) -> gym.spaces.Space:
         """Takes in agent and returns the action space for that agent.
 
         MUST return the same value for the same agent name

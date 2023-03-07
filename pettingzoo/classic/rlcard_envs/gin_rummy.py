@@ -109,14 +109,15 @@ Penalties of `deadwood_count / 100` ensure that the reward never goes below -1.
 
 """
 
-import gymnasium
+import gym
 import numpy as np
-from gymnasium.utils import EzPickle
+from gym.utils import EzPickle
 from rlcard.games.gin_rummy.player import GinRummyPlayer
 from rlcard.games.gin_rummy.utils import melding as melding
 from rlcard.games.gin_rummy.utils import utils
 from rlcard.games.gin_rummy.utils.action_event import GinAction, KnockAction
 from rlcard.utils.utils import print_card
+import warnings
 
 from pettingzoo.utils import wrappers
 
@@ -199,7 +200,7 @@ class raw_env(RLCardBase, EzPickle):
 
     def render(self):
         if self.render_mode is None:
-            gymnasium.logger.warn(
+            warnings.warn(
                 "You are calling render method without specifying any render mode."
             )
             return

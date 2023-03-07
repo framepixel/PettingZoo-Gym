@@ -7,7 +7,7 @@ title: Supersuit Wrappers
 PettingZoo include wrappers via the SuperSuit companion package (`pip install supersuit`). These can be applied to both AECEnv and ParallelEnv environments. Using it to convert space invaders to have a grey scale observation space and stack the last 4 frames looks like:
 
 ``` python
-import gymnasium as gym
+import gym as gym
 from supersuit import color_reduction_v0, frame_stack_v1
 
 env = gym.make('SpaceInvaders-v0')
@@ -149,7 +149,7 @@ Supersuit includes the following wrappers:
 [//]: # (The following function performs this conversion.)
 
 [//]: # ()
-[//]: # (* `pettingzoo_env_to_vec_env_v0&#40;env&#41;`: Takes a PettingZoo ParallelEnv with the following assumptions: no agent death or generation, homogeneous action and observation spaces. Returns a gymnasium vector environment where each "environment" in the vector represents one agent. An arbitrary PettingZoo parallel environment can be enforced to have these assumptions by wrapping it with the pad_action_space, pad_observations, and the black_death wrapper&#41;. This conversion to a vector environment can be used to train appropriate pettingzoo environments with standard single agent RL methods such as stable baselines's A2C out of box &#40;example below&#41;.)
+[//]: # (* `pettingzoo_env_to_vec_env_v0&#40;env&#41;`: Takes a PettingZoo ParallelEnv with the following assumptions: no agent death or generation, homogeneous action and observation spaces. Returns a gym vector environment where each "environment" in the vector represents one agent. An arbitrary PettingZoo parallel environment can be enforced to have these assumptions by wrapping it with the pad_action_space, pad_observations, and the black_death wrapper&#41;. This conversion to a vector environment can be used to train appropriate pettingzoo environments with standard single agent RL methods such as stable baselines's A2C out of box &#40;example below&#41;.)
 
 [//]: # ()
 [//]: # (You can also use the `concat_vec_envs_v0` functionality to train on several vector environments in parallel, forming a vector which looks like)

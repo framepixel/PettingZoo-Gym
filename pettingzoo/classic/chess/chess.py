@@ -86,10 +86,11 @@ You can get back the original (x,y,c) coordinates from the integer action `a` wi
 from os import path
 
 import chess
-import gymnasium
+import gym
 import numpy as np
-from gymnasium import spaces
-from gymnasium.error import DependencyNotInstalled
+from gym import spaces
+from gym.error import DependencyNotInstalled
+import warnings
 
 from pettingzoo import AECEnv
 from pettingzoo.utils import wrappers
@@ -277,7 +278,7 @@ class raw_env(AECEnv):
 
     def render(self):
         if self.render_mode is None:
-            gymnasium.logger.warn(
+            warnings.warn(
                 "You are calling render method without specifying any render mode."
             )
         elif self.render_mode == "ansi":

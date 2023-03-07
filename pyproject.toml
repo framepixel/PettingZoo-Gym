@@ -11,7 +11,7 @@ readme = "README.md"
 requires-python = ">= 3.7"
 authors = [{ name = "Farama Foundation", email = "contact@farama.org" }]
 license = { text = "MIT License" }
-keywords = ["Reinforcement Learning", "game", "RL", "AI", "gymnasium"]
+keywords = ["Reinforcement Learning", "game", "RL", "AI", "gym"]
 classifiers = [
     "Development Status :: 4 - Beta",  # change to `5 - Production/Stable` when ready
     "License :: OSI Approved :: MIT License",
@@ -26,7 +26,7 @@ classifiers = [
 ]
 dependencies = [
     "numpy>=1.21.0",
-    "gymnasium>=0.26.0",
+    "gym>=0.26.0",
 ]
 dynamic = ["version"]
 

@@ -1,12 +1,13 @@
 import math
 
-import gymnasium
+import gym
 import numpy as np
 import pygame
 import pymunk
-from gymnasium import spaces
-from gymnasium.utils import seeding
+from gym import spaces
+from gym.utils import seeding
 from scipy.spatial import distance as ssd
+import warnings
 
 from .waterworld_models import Evaders, Obstacle, Poisons, Pursuers
 
@@ -713,7 +714,7 @@ class WaterworldBase:
 
     def render(self):
         if self.render_mode is None:
-            gymnasium.logger.warn(
+            warnings.warn(
                 "You are calling render method without specifying any render mode."
             )
             return

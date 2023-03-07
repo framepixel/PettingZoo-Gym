@@ -179,12 +179,13 @@ import os
 import sys
 from itertools import repeat
 
-import gymnasium
+import gym
 import numpy as np
 import pygame
 import pygame.gfxdraw
-from gymnasium.spaces import Box, Discrete, Sequence
-from gymnasium.utils import EzPickle, seeding
+from gym.spaces import Box, Discrete, Sequence
+from gym.utils import EzPickle, seeding
+import warnings
 
 from pettingzoo import AECEnv
 from pettingzoo.utils import agent_selector, wrappers
@@ -803,7 +804,7 @@ class raw_env(AECEnv, EzPickle):
 
     def render(self):
         if self.render_mode is None:
-            gymnasium.logger.warn(
+            warnings.warn(
                 "You are calling render method without specifying any render mode."
             )
             return

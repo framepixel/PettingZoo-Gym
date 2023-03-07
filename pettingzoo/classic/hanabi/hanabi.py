@@ -158,10 +158,11 @@ If an illegal action is taken, the game terminates and the one player that took 
 
 from typing import Dict, List, Optional, Union
 
-import gymnasium
+import gym
 import numpy as np
-from gymnasium import spaces
-from gymnasium.utils import EzPickle
+from gym import spaces
+from gym.utils import EzPickle
+import warnings
 
 from pettingzoo import AECEnv
 from pettingzoo.utils import agent_selector, wrappers
@@ -553,7 +554,7 @@ class raw_env(AECEnv, EzPickle):
         Supports console print only.
         """
         if self.render_mode is None:
-            gymnasium.logger.warn(
+            warnings.warn(
                 "You are calling render method without specifying any render mode."
             )
             return

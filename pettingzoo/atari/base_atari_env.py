@@ -1,10 +1,11 @@
 from pathlib import Path
 
-import gymnasium
+import gym
 import multi_agent_ale_py
 import numpy as np
-from gymnasium import spaces
-from gymnasium.utils import EzPickle, seeding
+from gym import spaces
+from gym.utils import EzPickle, seeding
+import warnings
 
 from pettingzoo.utils import wrappers
 from pettingzoo.utils.conversions import (  # noqa: F401
@@ -132,7 +133,7 @@ class ParallelAtariEnv(ParallelEnv, EzPickle):
         self.action_mapping = action_mapping
 
         if obs_type == "ram":
-            observation_space = gymnasium.spaces.Box(
+            observation_space = gym.spaces.Box(
                 low=0, high=255, dtype=np.uint8, shape=(128,)
             )
         else:
@@ -153,7 +154,7 @@ class ParallelAtariEnv(ParallelEnv, EzPickle):
         self.possible_agents = self.agents[:]
 
         self.action_spaces = {
-            agent: gymnasium.spaces.Discrete(action_size)
+            agent: gym.spaces.Discrete(action_size)
             for agent in self.possible_agents
         }
         self.observation_spaces = {
@@ -235,7 +236,7 @@ class ParallelAtariEnv(ParallelEnv, EzPickle):
 
     def render(self):
         if self.render_mode is None:
-            gymnasium.logger.warn(
+            warnings.warn(
                 "You are calling render method without specifying any render mode."
             )
             return

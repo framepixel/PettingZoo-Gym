@@ -74,7 +74,7 @@ simple_world_comm.env(num_good=2, num_adversaries=4, num_obstacles=1,
 """
 
 import numpy as np
-from gymnasium.utils import EzPickle
+from gym.utils import EzPickle
 
 from pettingzoo.utils.conversions import parallel_wrapper_fn
 

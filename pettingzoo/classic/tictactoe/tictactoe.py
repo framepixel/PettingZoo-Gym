@@ -69,9 +69,10 @@ If the game ends in a draw, both players will receive a reward of 0.
 
 """
 
-import gymnasium
+import gym
 import numpy as np
-from gymnasium import spaces
+from gym import spaces
+import warnings
 
 from pettingzoo import AECEnv
 from pettingzoo.utils import agent_selector, wrappers
@@ -224,7 +225,7 @@ class raw_env(AECEnv):
 
     def render(self):
         if self.render_mode is None:
-            gymnasium.logger.warn(
+            warnings.warn(
                 "You are calling render method without specifying any render mode."
             )
             return

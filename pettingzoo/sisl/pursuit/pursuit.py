@@ -80,7 +80,7 @@ catch_reward=5.0, urgency_reward=-0.1, surround=True, constraint_window=1.0)
 
 import numpy as np
 import pygame
-from gymnasium.utils import EzPickle
+from gym.utils import EzPickle
 
 from pettingzoo import AECEnv
 from pettingzoo.utils import agent_selector, wrappers

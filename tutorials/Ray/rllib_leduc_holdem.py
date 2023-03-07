@@ -5,7 +5,7 @@ Author: Rohan (https://github.com/Rohan138)
 
 import os
 
-from gymnasium.spaces import Box
+from gym.spaces import Box
 from ray import tune
 from ray.rllib.algorithms.dqn import DQNConfig
 from ray.rllib.algorithms.dqn.dqn_torch_model import DQNTorchModel

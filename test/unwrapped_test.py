@@ -1,5 +1,5 @@
 import pytest
-from gymnasium import spaces
+from gym import spaces
 
 from pettingzoo.utils import conversions, wrappers
 

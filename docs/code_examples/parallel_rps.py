@@ -1,7 +1,8 @@
 import functools
 
-import gymnasium
-from gymnasium.spaces import Discrete
+import gym
+from gym.spaces import Discrete
+import warnings
 
 from pettingzoo import ParallelEnv
 from pettingzoo.utils import parallel_to_aec, wrappers
@@ -75,7 +76,7 @@ class parallel_env(ParallelEnv):
     # allows action space seeding to work as expected
     @functools.lru_cache(maxsize=None)
     def observation_space(self, agent):
-        # gymnasium spaces are defined and documented here: https://gymnasium.farama.org/api/spaces/
+        # gym spaces are defined and documented here: https://gym.farama.org/api/spaces/
         return Discrete(4)
 
     @functools.lru_cache(maxsize=None)
@@ -88,7 +89,7 @@ class parallel_env(ParallelEnv):
         up a graphical window, or open up some other display that a human can see and understand.
         """
         if self.render_mode is None:
-            gymnasium.logger.warn(
+            warnings.warn(
                 "You are calling render method without specifying any render mode."
             )
             return

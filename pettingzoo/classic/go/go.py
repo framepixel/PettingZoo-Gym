@@ -110,10 +110,11 @@ For example, you would use action `4` to place a stone on the board at the (0,3)
 import os
 from typing import Optional
 
-import gymnasium
+import gym
 import numpy as np
 import pygame
-from gymnasium import spaces
+from gym import spaces
+import warnings
 
 from pettingzoo import AECEnv
 from pettingzoo.utils import wrappers
@@ -331,7 +332,7 @@ class raw_env(AECEnv):
 
     def render(self):
         if self.render_mode is None:
-            gymnasium.logger.warn(
+            warnings.warn(
                 "You are calling render method without specifying any render mode."
             )
             return

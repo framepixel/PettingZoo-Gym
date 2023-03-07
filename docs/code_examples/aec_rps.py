@@ -1,8 +1,9 @@
 import functools
 
-import gymnasium
+import gym
 import numpy as np
 from gymnasium.spaces import Discrete
+import warnings
 
 from pettingzoo import AECEnv
 from pettingzoo.utils import agent_selector, wrappers
@@ -47,7 +48,7 @@ def env(render_mode=None):
 
 class raw_env(AECEnv):
     """
-    The metadata holds environment constants. From gymnasium, we inherit the "render_modes",
+    The metadata holds environment constants. From gym, we inherit the "render_modes",
     metadata which specifies which modes can be put into the render() method.
     At least human mode should be supported.
     The "name" metadata allows the environment to be pretty printed.
@@ -69,7 +70,7 @@ class raw_env(AECEnv):
             zip(self.possible_agents, list(range(len(self.possible_agents))))
         )
 
-        # gymnasium spaces are defined and documented here: https://gymnasium.farama.org/api/spaces/
+        # gym spaces are defined and documented here: https://gym.farama.org/api/spaces/
         self._action_spaces = {agent: Discrete(3) for agent in self.possible_agents}
         self._observation_spaces = {
             agent: Discrete(4) for agent in self.possible_agents
@@ -80,7 +81,7 @@ class raw_env(AECEnv):
     # allows action space seeding to work as expected
     @functools.lru_cache(maxsize=None)
     def observation_space(self, agent):
-        # gymnasium spaces are defined and documented here: https://gymnasium.farama.org/api/spaces/
+        # gym spaces are defined and documented here: https://gym.farama.org/api/spaces/
         return Discrete(4)
 
     @functools.lru_cache(maxsize=None)
@@ -93,7 +94,7 @@ class raw_env(AECEnv):
         up a graphical window, or open up some other display that a human can see and understand.
         """
         if self.render_mode is None:
-            gymnasium.logger.warn(
+            warnings.warn(
                 "You are calling render method without specifying any render mode."
             )
             return

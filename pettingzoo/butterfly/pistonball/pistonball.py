@@ -80,12 +80,13 @@ ball_elasticity=1.5, max_cycles=125)
 
 import math
 
-import gymnasium
+import gym
 import numpy as np
 import pygame
 import pymunk
 import pymunk.pygame_util
-from gymnasium.utils import EzPickle, seeding
+from gym.utils import EzPickle, seeding
+import warnings
 
 from pettingzoo import AECEnv
 from pettingzoo.utils import agent_selector, wrappers
@@ -185,7 +186,7 @@ class raw_env(AECEnv, EzPickle):
             zip(
                 self.agents,
                 [
-                    gymnasium.spaces.Box(
+                    gym.spaces.Box(
                         low=0,
                         high=255,
                         shape=(obs_height, self.piston_width * 3, 3),
@@ -200,14 +201,14 @@ class raw_env(AECEnv, EzPickle):
             self.action_spaces = dict(
                 zip(
                     self.agents,
-                    [gymnasium.spaces.Box(low=-1, high=1, shape=(1,))] * self.n_pistons,
+                    [gym.spaces.Box(low=-1, high=1, shape=(1,))] * self.n_pistons,
                 )
             )
         else:
             self.action_spaces = dict(
-                zip(self.agents, [gymnasium.spaces.Discrete(3)] * self.n_pistons)
+                zip(self.agents, [gym.spaces.Discrete(3)] * self.n_pistons)
             )
-        self.state_space = gymnasium.spaces.Box(
+        self.state_space = gym.spaces.Box(
             low=0,
             high=255,
             shape=(self.screen_height, self.screen_width, 3),
@@ -592,7 +593,7 @@ class raw_env(AECEnv, EzPickle):
 
     def render(self):
         if self.render_mode is None:
-            gymnasium.logger.warn(
+            warnings.warn(
                 "You are calling render method without specifying any render mode."
             )
             return

@@ -1,6 +1,6 @@
 import warnings
 
-from gymnasium.utils import seeding
+from gym.utils import seeding
 
 from ..env import ParallelEnv
 
