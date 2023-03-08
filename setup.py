@@ -9,7 +9,7 @@ CWD = pathlib.Path(__file__).absolute().parent
 
 def get_version():
     """Gets the pettingzoo version."""
-    path = CWD / "pettingzoo" / "__init__.py"
+    path = CWD / "pettingzoogym" / "__init__.py"
     content = path.read_text()
 
     for line in content.splitlines():
